@@ -43,7 +43,7 @@ export class OperatorListItem extends Component {
             style={{ width: "360px" }}
             className="ui-card-shadow card block"
             footer={footer}
-            header={header}
+            // header={header}
           >
             {/* <div>{operatorSchedule}</div> */}
           </Card>

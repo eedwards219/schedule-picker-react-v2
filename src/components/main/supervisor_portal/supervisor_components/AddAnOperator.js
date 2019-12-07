@@ -8,10 +8,12 @@ import { connect } from "react-redux";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { addOperator } from "../../../../store/operators/actions";
+import SupervisorNav from "./SupervisorNav";
 
 export class AddAnOperator extends Component {
   constructor() {
     super();
+
     let today = new Date();
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -29,152 +31,92 @@ export class AddAnOperator extends Component {
 
     this.state = {
       name: "",
-      serialNumber: "",
-      hireDate: "",
+      aNumber: "",
       supervisor: "",
       schedule: "",
-      blankForm: "",
-      supervisors: [
-        { label: "John Smith", value: "John Smith" },
-        { label: "Wale Andaryain", value: "Wale Andaryain" },
-        { label: "Paul Atreides", value: "Paul Atreides" }
-      ]
-      // supervisors: [
-      //   { label: "John Smith", value: "John Smith" },
-      //   { label: "Wale Andaryain", value: "Wale Andaryain" },
-      //   { label: "Paul Atreides", value: "Paul Atreides" }
-      // ]
+      blankForm: ""
     };
   }
   handleSubmit = e => {
     e.preventDefault();
-    this.state.addOperator({
+    console.log("addOp", this.state);
+    this.props.addOperator({
       name: this.state.name,
-      serialNumber: this.state.serialNumber,
-      hireDate: this.state.hireDate,
+      aNumber: this.state.aNumber,
       supervisor: this.state.supervisor,
       schedule: this.state.schedule
     });
-    // this.setState({ blankForm: " " });
   };
 
   render() {
-    console.log("addprops", this.props);
-    // console.log("addstate", this.state);
-    // console.log("supervisors", this.props.supervisors);
-    console.log("schedules", this.props.schedules);
+    console.log("thisstate", this.state);
+    // console.log("addprops", this.props);
+    // console.log("schedules", this.props.schedules);
+
+    const listOfSupervisors = this.props.supervisors.map(supervisor => ({
+      label: supervisor,
+      value: supervisor
+    }));
+    const listOfSchedules = this.props.schedules.map(schedule => ({
+      label: `${schedule.daysOff} ${schedule.time}`,
+      value: `${schedule.daysOff} ${schedule.time}`
+    }));
 
     return (
       <div className="p-grid p-fluid ">
+        <SupervisorNav />
+
         <div className="p-col-12 p-lg-6">
           <div className="card card-w-title">
-            <h1>Add A Schedule</h1>
+            <h1>Add An Operator</h1>
             <div className="p-grid form-group" onSubmit={this.handleSubmit}>
               <div className="p-col-12 p-md-4 ">
-                <div className="card card-w-title">
-                  <h1>Days Off</h1>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Sunday"
-                      inputId="cb7"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.checkboxValue.indexOf("Sunday") > -1}
-                    />
-                    <label htmlFor="cb7" className="p-checkbox-label">
-                      Sunday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Monday"
-                      inputId="cb6"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.checkboxValue.indexOf("Monday") > -1}
-                    />
-                    <label htmlFor="cb6" className="p-checkbox-label">
-                      Monday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Tuesday"
-                      inputId="cb5"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.checkboxValue.indexOf("Tuesday") > -1}
-                    />
-                    <label htmlFor="cb5" className="p-checkbox-label">
-                      Tuesday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Wednesday"
-                      inputId="cb4"
-                      onChange={this.onCheckboxChange}
-                      checked={
-                        this.state.checkboxValue.indexOf("Wednesday") > -1
-                      }
-                    />
-                    <label htmlFor="cb4" className="p-checkbox-label">
-                      Wednesday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Thursday"
-                      inputId="cb3"
-                      onChange={this.onCheckboxChange}
-                      checked={
-                        this.state.checkboxValue.indexOf("Thursday") > -1
-                      }
-                    />
-                    <label htmlFor="cb3" className="p-checkbox-label">
-                      Thursday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Friday"
-                      inputId="cb2"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.checkboxValue.indexOf("Friday") > -1}
-                    />
-                    <label htmlFor="cb2" className="p-checkbox-label">
-                      Friday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Saturday"
-                      inputId="cb1"
-                      onChange={this.onCheckboxChange}
-                      checked={
-                        this.state.checkboxValue.indexOf("Saturday") > -1
-                      }
-                    />
-                    <label htmlFor="cb1" className="p-checkbox-label">
-                      Saturday
-                    </label>
-                  </div>
-                </div>
+                <span className="md-inputfield">
+                  <InputText
+                    onChange={e => this.setState({ name: e.target.value })}
+                  />
+                  <label>Name</label>
+                </span>
               </div>
-              <div className="card card-w-title">
-                <div className="p-col-12">
-                  <Calendar
-                    placeholder="Time"
-                    timeOnly={true}
-                    showTime={true}
-                    value={this.state.date4}
-                    onChange={e => this.setState({ date4: e.value })}
+              {/* <div className="p-col-12 p-md-4">
+                <span className="md-inputfield">
+                  <InputText
+                    onChange={e =>
+                      this.setState({ aNumber: e.target.value })
+                    }
+                  />
+                  <label>Serial Number</label>
+                </span>
+              </div> */}
+              <div className="p-col-12 p-md-4">
+                <span className="md-inputfield">
+                  <InputText
+                    onChange={e => this.setState({ aNumber: e.target.value })}
+                  />
+                  <label>A#</label>
+                </span>
+              </div>
+              <div className="p-col-12 p-lg-6">
+                <div className="card card-w-title">
+                  <h1>Supervisor</h1>
+                  <Dropdown
+                    options={listOfSupervisors}
+                    value={this.state.supervisor}
+                    onChange={event =>
+                      this.setState({ supervisor: event.value })
+                    }
+                    autoWidth={false}
                   />
                 </div>
-                <div className="p-col-12">
-                  <Calendar
-                    placeholder="Time"
-                    timeOnly={true}
-                    showTime={true}
-                    value={this.state.date}
-                    onChange={e => this.setState({ date4: e.value })}
+              </div>
+              <div className="p-col-12 p-lg-6">
+                <div className="card card-w-title">
+                  <h1>Schedule</h1>
+                  <Dropdown
+                    options={listOfSchedules}
+                    value={this.state.schedule}
+                    onChange={event => this.setState({ schedule: event.value })}
+                    autoWidth={false}
                   />
                 </div>
               </div>
@@ -197,11 +139,10 @@ const mapStateToProps = state => {
   return {
     operators: state.operators.all.filter(operator => operator.id),
     // supervisors: state.supervisors.all.filter(supervisor => supervisor.name),
-    supervisors: state.supervisors.all.find(supervisor => supervisor.name),
-    schedules: state.schedules.all
-      // .find(schedule => schedule.id)
-      .filter(schedule => schedule.length)
-    // .map(schedule => schedule)
+    supervisors: state.supervisors.all.map(supervisor => supervisor.name),
+    // schedules: state.schedules.all.map(schedule => schedule)
+
+    schedules: state.schedules.all.map(schedule => schedule)
   };
 };
-export default connect(mapStateToProps)(AddAnOperator);
+export default connect(mapStateToProps, { addOperator })(AddAnOperator);

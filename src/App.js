@@ -29,6 +29,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddASchedule from "./components/main/supervisor_portal/supervisor_components/AddASchedule";
 import ScheduleList from "./components/main/supervisor_portal/supervisor_components/ScheduleList";
 import ScheduleListItem from "./components/main/supervisor_portal/supervisor_components/ScheduleListItem";
+import EditAnOperator from "./components/main/supervisor_portal/supervisor_components/EditAnOperator";
+import EditASchedule from "./components/main/supervisor_portal/supervisor_components/EditASchedule";
+import createBrowserHistory from "history/createBrowserHistory";
 
 class App extends Component {
   componentDidMount() {
@@ -680,6 +683,7 @@ class App extends Component {
       "layout-sidebar-dark": this.state.darkMenu
     });
     const AppBreadCrumbWithRouter = withRouter(AppBreadcrumb);
+    let History = createBrowserHistory();
 
     return (
       <div className={wrapperClass} onClick={this.onWrapperClick}>
@@ -730,7 +734,7 @@ class App extends Component {
           />
 
           <AppBreadCrumbWithRouter />
-          <Router>
+          <Router history={History}>
             <div className="layout-content">
               <Switch>
                 <Route path="/" exact component={Main} />
@@ -740,8 +744,10 @@ class App extends Component {
                 <Route path="/sli" component={ScheduleListItem} />
                 <Route path="/sl" component={ScheduleList} />
                 <Route path="/ol" component={OperatorList} />
-                <Route path="/add" component={AddAnOperator} />
+                <Route path="/addoperator" component={AddAnOperator} />
                 <Route path="/addschedule" component={AddASchedule} />
+                <Route path="/editoperator" component={EditAnOperator} />
+                <Route path="/editschedule" component={EditASchedule} />
               </Switch>
             </div>
           </Router>

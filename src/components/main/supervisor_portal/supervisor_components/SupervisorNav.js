@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
-import logo from "../../../logo.svg";
+// import logo from "../../../logo.svg";
 import { TabMenu } from "primereact/tabmenu";
-import { AddASchedule } from "./supervisor_components/AddASchedule";
-import ScheduleList from "./supervisor_components/ScheduleList";
-import OperatorList from "./supervisor_components/OperatorList";
-import SupervisorNav from "./supervisor_components/SupervisorNav";
 
-export default class SupervisorPortal extends Component {
+export default class SupervisorNav extends Component {
   constructor() {
     super();
     this.state = {
+      activeItem: null,
       items: [
-        { label: "Home", icon: "pi pi-fw pi-home", url: "/" },
+        { label: "Home", icon: "pi pi-fw pi-home", url: "/supervisor" },
         {
           label: "Add An Operator",
           icon: "pi pi-fw pi-user-plus",
@@ -51,15 +48,12 @@ export default class SupervisorPortal extends Component {
 
   render() {
     return (
-      <div className="p-grid">
-        <SupervisorNav />
-
-        <div className="p-col-12">
-          <div className="p-grid">
-            <OperatorList />
-            <ScheduleList />
-          </div>
-        </div>
+      <div>
+        <TabMenu
+          model={this.state.items}
+          activeItem={this.state.activeItem}
+          onTabChange={e => this.setState({ activeItem: e.value })}
+        />
       </div>
     );
   }

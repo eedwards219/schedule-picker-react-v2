@@ -26,31 +26,25 @@ class OperatorList extends Component {
         <OperatorListItem key={operator.id} operator={operator} />
       ));
     return (
-      <div className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <h2>Search For An Employee Below</h2>
-        <div>
-          <div className="p-grid p-fluid">
-            <div className="p-col-12 p-md-4">
-              <div className="p-inputgroup"></div>
-            </div>
-            <div>
-              {/* <Button label="Search" className="card2 block" /> */}
-              <InputText
-                placeholder="Keyword"
-                type="text"
-                onChange={this.handleChange}
-                name="filterPhrase"
-                fluid
-                icon="search"
-                iconPosition="left"
-                placeholder="Search Here"
-                className="card2 block"
-              />
-            </div>
+      <div className="p-grid">
+        <div className="p-col-12">
+          <div className="card">
+            <h2>Search For An Employee Below</h2>
+
+            <InputText
+              placeholder="Keyword"
+              type="text"
+              onChange={this.handleChange}
+              name="filterPhrase"
+              fluid
+              icon="search"
+              iconPosition="left"
+              placeholder="Search Here"
+              className="card2 block"
+            />
+            {searchOperators}
           </div>
         </div>
-        {searchOperators}
       </div>
     );
   }

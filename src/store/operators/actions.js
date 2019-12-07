@@ -38,12 +38,12 @@ export const fetchOneOperator = id => async dispatch => {
   }
 };
 
-export const addOperator = newTeeTime => async dispatch => {
+export const addOperator = newOperator => async dispatch => {
   dispatch({
     type: types.ADD_OPERATORS_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, newTeeTime);
+    let response = await axios.post(BASE_URL, newOperator);
     dispatch({
       type: types.ADD_OPERATORS_SUCCESS,
       payload: response.data

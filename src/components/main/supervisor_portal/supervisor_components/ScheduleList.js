@@ -30,6 +30,8 @@ class ScheduleList extends Component {
       <div className="p-grid">
         <div className="p-col-12">
           <div className="card">
+            <h2>Search For A Schedule Below</h2>
+
             <InputText
               placeholder="Keyword"
               type="text"
