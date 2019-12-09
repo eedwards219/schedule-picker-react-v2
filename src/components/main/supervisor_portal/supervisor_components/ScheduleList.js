@@ -6,45 +6,65 @@ import OperatorListItem from "./OperatorListItem";
 import { connect } from "react-redux";
 import { InputText } from "primereact/inputtext";
 import ScheduleListItem from "./ScheduleListItem";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { fetchAllSchedules } from "../../../../store/schedules/actions";
 
 class ScheduleList extends Component {
   state = {
     filterPhrase: "",
-    filterBy: "name"
+    filterBy: "name",
+    dataTableValue: []
   };
+
   handleChange = e => {
     let { name, value } = e.target;
     this.setState({
       [name]: value
     });
   };
+  // componentDidMount() {
+  //   this.props
+  //     .fetchAllOperators()
+  //     .then(data => this.setState({ dataTableValue: data.data }));
+  // }
 
   render() {
-    let showSchedules = this.props.schedules
-      .filter(schedule => schedule.daysOff.includes(this.state.filterPhrase))
-      .filter(schedule => this.props.schedules.length)
-      .map(schedule => (
-        <ScheduleListItem key={schedule.id} schedule={schedule} />
-      ));
+    console.log("fetchAllOperators", this.fetchAllOperators);
+
+    // let showSchedules = this.props.schedules
+    //   .filter(schedule => schedule.daysOff.includes(this.state.filterPhrase))
+    //   .filter(schedule => this.props.schedules.length)
+    //   .map(schedule => (
+    //     <ScheduleListItem key={schedule.id} schedule={schedule} />
+    //   ));
+
+    const listOfSchedules = this.props.schedules.map(schedule => ({
+      dataTableValue: [schedule.daysOff]
+      // value: `${schedule.daysOff} ${schedule.time}`
+    }));
     return (
       <div className="p-grid">
         <div className="p-col-12">
-          <div className="card">
-            <h2>Search For A Schedule Below</h2>
-
-            <InputText
-              placeholder="Keyword"
-              type="text"
-              onChange={this.handleChange}
-              name="filterPhrase"
-              icon="search"
-              iconPosition="left"
-              placeholder="Search Here"
-
-              // className="card "
-            />
-            {showSchedules}
-          </div>{" "}
+          <div className="card card-w-title">
+            {/* <h1>DataTable</h1> */}
+            <DataTable
+              value={listOfSchedules}
+              paginatorPosition="both"
+              selectionMode="single"
+              header="All Schedules"
+              paginator={true}
+              rows={25}
+              responsive={true}
+              selection={this.state.dataTableSelection}
+              onSelectionChange={event =>
+                this.setState({ dataTableSelection: event.value })
+              }
+            >
+              <Column field="Days Off" header="Days Off" sortable={true} />
+              <Column field="Times" header="Times" sortable={true} />
+            </DataTable>
+          </div>
         </div>
       </div>
     );
@@ -85,4 +105,25 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.filter(schedule => schedule.id)
   };
 };
-export default connect(mapStateToProps)(ScheduleList);
+export default connect(mapStateToProps, { fetchAllSchedules })(ScheduleList);
+
+{
+  /* <div className="p-col-12">
+          <div className="card">
+            <h2>Search For A Schedule Below</h2>
+
+            <InputText
+              placeholder="Keyword"
+              type="text"
+              onChange={this.handleChange}
+              name="filterPhrase"
+              icon="search"
+              iconPosition="left"
+              placeholder="Search Here"
+
+              // className="card "
+            />
+            {showSchedules}
+          </div>
+        </div> */
+}

@@ -73,3 +73,21 @@ export const removeOperator = id => async dispatch => {
     });
   }
 };
+
+export const editOperator = (updatedOperator, id) => async dispatch => {
+  dispatch({
+    type: types.EDIT_OPERATOR_PENDING
+  });
+  try {
+    let response = await axios.patch(BASE_URL + `/${id}`, updatedOperator);
+    dispatch({
+      type: types.EDIT_OPERATOR_SUCCESS,
+      payload: response.data
+    });
+  } catch (err) {
+    dispatch({
+      type: types.EDIT_OPERATOR_FAILED,
+      payload: err
+    });
+  }
+};

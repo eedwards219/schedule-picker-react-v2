@@ -70,7 +70,7 @@ export class AddAnOperator extends Component {
           <div className="card card-w-title">
             <h1>Add An Operator</h1>
             <div className="p-grid form-group" onSubmit={this.handleSubmit}>
-              <div className="p-col-12 p-md-4 ">
+              <div className="p-col-12 p-md-6 ">
                 <span className="md-inputfield">
                   <InputText
                     onChange={e => this.setState({ name: e.target.value })}
@@ -88,7 +88,7 @@ export class AddAnOperator extends Component {
                   <label>Serial Number</label>
                 </span>
               </div> */}
-              <div className="p-col-12 p-md-4">
+              <div className="p-col-12 p-md-6">
                 <span className="md-inputfield">
                   <InputText
                     onChange={e => this.setState({ aNumber: e.target.value })}

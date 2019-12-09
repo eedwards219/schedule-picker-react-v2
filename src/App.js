@@ -32,6 +32,9 @@ import ScheduleListItem from "./components/main/supervisor_portal/supervisor_com
 import EditAnOperator from "./components/main/supervisor_portal/supervisor_components/EditAnOperator";
 import EditASchedule from "./components/main/supervisor_portal/supervisor_components/EditASchedule";
 import createBrowserHistory from "history/createBrowserHistory";
+import RemoveAnOperator from "./components/main/supervisor_portal/supervisor_components/RemoveAnOperator";
+import RemoveASchedule from "./components/main/supervisor_portal/supervisor_components/RemoveASchedule";
+import PickYourSchedule from "./components/main/operator_portal/operator_components/PickYourSchedule";
 
 class App extends Component {
   componentDidMount() {
@@ -748,6 +751,9 @@ class App extends Component {
                 <Route path="/addschedule" component={AddASchedule} />
                 <Route path="/editoperator" component={EditAnOperator} />
                 <Route path="/editschedule" component={EditASchedule} />
+                <Route path="/removeschedule" component={RemoveASchedule} />
+                <Route path="/removeoperator" component={RemoveAnOperator} />
+                <Route path="/pick" component={PickYourSchedule} />
               </Switch>
             </div>
           </Router>

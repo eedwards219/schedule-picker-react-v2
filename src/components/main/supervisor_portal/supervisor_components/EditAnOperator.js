@@ -30,35 +30,27 @@ export class EditAnOperator extends Component {
 
     this.state = {
       name: "",
-      serialNumber: "",
       aNumber: "",
       supervisor: "",
       schedule: "",
       operator: "",
       blankForm: ""
-
-      // supervisors: [
-      //   { label: "John Smith", value: "John Smith" },
-      //   { label: "Wale Andaryain", value: "Wale Andaryain" },
-      //   { label: "Paul Atreides", value: "Paul Atreides" }
-      // ]
     };
   }
   handleSubmit = e => {
     e.preventDefault();
     this.state.addOperator({
       name: this.state.name,
-      serialNumber: this.state.serialNumber,
-      hireDate: this.state.hireDate
-      // supervisor: this.state.supervisor,
-      // schedule: this.state.schedule
+      aNumber: this.state.serialNumber,
+      supervisor: this.state.supervisor,
+      schedule: this.state.schedule
     });
     // this.setState({ blankForm: " " });
   };
 
   render() {
-    console.log("addprops", this.props);
-    // console.log("addstate", this.state);
+    // console.log("addprops", this.props);
+    console.log("addstate", this.state);
     // console.log("supervisors", this.props.supervisors);
     console.log("schedules", this.props.schedules);
     const listOfSchedules = this.props.schedules.map(schedule => ({
@@ -70,8 +62,8 @@ export class EditAnOperator extends Component {
       value: supervisor
     }));
     const listOfOperators = this.props.operators.map(operator => ({
-      label: `${operator.name} ${operator.serialNumber}`,
-      value: `${operator.name} ${operator.serialNumber}`
+      label: `${operator.name} ${operator.aNumber}`,
+      value: `${operator.name} ${operator.aNumber}`
     }));
 
     return (
@@ -94,23 +86,15 @@ export class EditAnOperator extends Component {
                   <h1>To Reflect These Changes:</h1>
                 </div>
                 <div className="p-grid form-group" onSubmit={this.handleSubmit}>
-                  <div className="p-col-12 p-md-4 ">
+                  <div className="p-col-12 p-md-6">
                     <span className="md-inputfield">
                       <InputText
-                        onChange={e => this.setState({ name: e.value })}
+                        onChange={e => this.setState({ name: e.target.value })}
                       />
                       <label>Name</label>
                     </span>
                   </div>
-                  <div className="p-col-12 p-md-4">
-                    <span className="md-inputfield">
-                      <InputText
-                        onChange={e => this.setState({ serialNumber: e.value })}
-                      />
-                      <label>Serial Number</label>
-                    </span>
-                  </div>
-                  <div className="p-col-12 p-md-4">
+                  <div className="p-col-12 p-md-6">
                     <span className="md-inputfield">
                       <InputText
                         onChange={e =>
@@ -120,6 +104,7 @@ export class EditAnOperator extends Component {
                       <label>A#</label>
                     </span>
                   </div>
+
                   <div className="p-col-12 p-lg-6">
                     <div>
                       <h1>Supervisor</h1>
@@ -168,10 +153,7 @@ const mapStateToProps = state => {
     operators: state.operators.all.filter(operator => operator.id),
     // supervisors: state.supervisors.all.filter(supervisor => supervisor.name),
     supervisors: state.supervisors.all.map(supervisor => supervisor.name),
-    schedules: state.schedules.all
-      // .find(schedule => schedule.id)
-      .filter(schedule => schedule.id && schedule.time && schedule.daysOff)
-    // .map(schedule => schedule)
+    schedules: state.schedules.all.map(schedule => schedule)
   };
 };
 export default connect(mapStateToProps)(EditAnOperator);

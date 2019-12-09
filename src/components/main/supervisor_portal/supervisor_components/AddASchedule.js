@@ -9,6 +9,7 @@ import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { addSchedule } from "../../../../store/schedules/actions";
 import SupervisorNav from "./SupervisorNav";
+import { MultiSelect } from "primereact/multiselect";
 
 export class AddASchedule extends Component {
   constructor() {
@@ -31,8 +32,43 @@ export class AddASchedule extends Component {
 
     this.state = {
       daysOff: [],
-      timeFrom: "",
-      timeUntil: ""
+      fromHours: "",
+      fromMinutes: "",
+      untilHours: "",
+      untilMinutes: "",
+      hourOptions: [
+        { label: "00", value: "00" },
+        { label: "01", value: "01" },
+        { label: "02", value: "02" },
+        { label: "03", value: "03" },
+        { label: "04", value: "04" },
+        { label: "05", value: "05" },
+        { label: "06", value: "06" },
+        { label: "07", value: "07" },
+        { label: "08", value: "08" },
+        { label: "09", value: "09" },
+        { label: "10", value: "10" },
+        { label: "11", value: "11" },
+        { label: "12", value: "12" },
+        { label: "13", value: "13" },
+        { label: "14", value: "14" },
+        { label: "15", value: "15" },
+        { label: "16", value: "16" },
+        { label: "16", value: "16" },
+        { label: "17", value: "17" },
+        { label: "18", value: "18" },
+        { label: "19", value: "16" },
+        { label: "20", value: "20" },
+        { label: "21", value: "21" },
+        { label: "22", value: "22" },
+        { label: "23", value: "23" }
+      ],
+      minuteOptions: [
+        { label: "00", value: "00" },
+        { label: "15", value: "15" },
+        { label: "30", value: "30" },
+        { label: "45", value: "45" }
+      ]
     };
   }
   onCheckboxChange(event) {
@@ -158,26 +194,49 @@ export class AddASchedule extends Component {
                       Saturday
                     </label>
                   </div>
+                </div>
 
-                  <div className="p-col-12">
-                    <h1>Times</h1>
+                <div className="p-col-12 p-md-6">
+                  <h1>Times</h1>
+
+                  <div>
                     From
-                    <Calendar
-                      placeholder="Time"
-                      timeOnly={true}
-                      showTime={true}
-                      value={this.state.timeFrom}
-                      onChange={e => this.setState({ timeFrom: e.value })}
+                    <Dropdown
+                      options={this.state.hourOptions}
+                      value={this.state.fromHours}
+                      onChange={event =>
+                        this.setState({ fromHours: event.value })
+                      }
+                      autoWidth={false}
+                    />
+                    <Dropdown
+                      options={this.state.minuteOptions}
+                      value={this.state.fromMinutes}
+                      onChange={event =>
+                        this.setState({ fromMinutes: event.value })
+                      }
+                      autoWidth={false}
                     />
                   </div>
-                  <div className="p-col-12">
+                  <div>
                     to
-                    <Calendar
-                      placeholder="Time"
-                      timeOnly={true}
-                      showTime={true}
-                      value={this.state.timeUntil}
-                      onChange={e => this.setState({ timeUntil: e.value })}
+                    <div>
+                      <Dropdown
+                        options={this.state.hourOptions}
+                        value={this.state.untilHours}
+                        onChange={event =>
+                          this.setState({ untilHours: event.value })
+                        }
+                        autoWidth={false}
+                      />
+                    </div>
+                    <Dropdown
+                      options={this.state.minuteOptions}
+                      value={this.state.untilMinutes}
+                      onChange={event =>
+                        this.setState({ untilMinutes: event.value })
+                      }
+                      autoWidth={false}
                     />
                   </div>
                   <Button

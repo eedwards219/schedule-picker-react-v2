@@ -36,6 +36,14 @@ function operatorReducer(state = initialState, action) {
         ...state,
         all: state.all.filter(operator => operator.id === action.payload.id)
       };
+    case types.EDIT_OPERATOR_SUCCESS:
+      return {
+        ...state,
+        all: [
+          action.payload,
+          ...state.all.filter(user => user.id !== action.payload.id)
+        ]
+      };
 
     default:
       return state;
