@@ -41,6 +41,12 @@ export default class SupervisorNav extends Component {
           icon: "pi pi-fw pi-calendar-minus",
           url: "/removeschedule"
         },
+        {
+          label: "Finalize Schedule",
+          icon: "pi pi-fw pi-sitemap",
+          url: "/finalize"
+        },
+
         { label: "Settings", icon: "pi pi-fw pi-cog" }
       ]
     };

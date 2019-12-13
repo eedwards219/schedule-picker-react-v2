@@ -54,8 +54,8 @@ export class EditAnOperator extends Component {
     // console.log("supervisors", this.props.supervisors);
     console.log("schedules", this.props.schedules);
     const listOfSchedules = this.props.schedules.map(schedule => ({
-      label: `${schedule.daysOff} ${schedule.time}`,
-      value: `${schedule.daysOff} ${schedule.time}`
+      label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
+      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
     }));
     const listOfSupervisors = this.props.supervisors.map(supervisor => ({
       label: supervisor,
@@ -97,6 +97,7 @@ export class EditAnOperator extends Component {
                   <div className="p-col-12 p-md-6">
                     <span className="md-inputfield">
                       <InputText
+                        keyfilter="pint"
                         onChange={e =>
                           this.setState({ aNumber: e.target.value })
                         }

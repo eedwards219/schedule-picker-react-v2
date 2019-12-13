@@ -39,8 +39,8 @@ export class RemoveAnOperator extends Component {
     // console.log("schedules", this.props.schedules);
 
     const listOfSchedules = this.props.schedules.map(schedule => ({
-      label: `${schedule.daysOff} ${schedule.time}`,
-      value: `${schedule.daysOff} ${schedule.time}`
+      label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
+      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
     }));
 
     return (

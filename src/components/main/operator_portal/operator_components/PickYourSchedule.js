@@ -22,7 +22,6 @@ export class PickYourSchedule extends Component {
     this.scheduleTemplate = this.scheduleTemplate.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-
   //   componentDidMount() {
   //     this.setState({ source: this.carservice.getCarsSmall() });
   //   }
@@ -35,14 +34,14 @@ export class PickYourSchedule extends Component {
   }
 
   scheduleTemplate(schedule) {
-    var imageSource =
-      "https://raw.githubusercontent.com/primefaces/primereact/master/public/showcase/resources/demo/images/car/" +
-      schedule.brand +
-      ".png";
+    // var imageSource =
+    //   "https://raw.githubusercontent.com/primefaces/primereact/master/public/showcase/resources/demo/images/car/" +
+    //   schedule.brand +
+    //   ".png";
     return (
       <div className="p-clearfix">
         <img
-          src={imageSource}
+          //   src={imageSource}
           alt={schedule.brand}
           style={{
             display: "inline-block",
@@ -53,23 +52,29 @@ export class PickYourSchedule extends Component {
         <div
           style={{ fontSize: "14px", float: "right", margin: "15px 5px 0 0" }}
         >
-          {schedule.daysOff}={schedule.timeFrom} - {schedule.timeUntil}
+          {schedule.daysOff}:{schedule.fromHours}
+          {schedule.fromMinutes} - {schedule.untilHours}
+          {schedule.untilMinutes}
         </div>
       </div>
     );
   }
 
   render() {
-    console.log("time", this.time);
+    console.log("pickstate", this.state);
     console.log("pickprops", this.props);
 
     const listOfSchedules = this.props.schedules.map(schedule => ({
       daysOff: `${schedule.daysOff}`,
-      timeFrom: `${schedule.timeFrom}`,
-      timeUntil: `${schedule.timeUntil}`
+      fromHours: `${schedule.fromHours}`,
+      fromMinutes: `${schedule.fromMinutes}`,
+      untilHours: `${schedule.untilHours}`,
+      untilMinutes: `${schedule.untilMinutes}`
     }));
     return (
       <div className="p-grid p-fluid ">
+        <OperatorNav />
+
         <div className="p-col-12 p-lg-12">
           <div className="card card-w-title">
             <h1>Pick Your Schedule</h1>

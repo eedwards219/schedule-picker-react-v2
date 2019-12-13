@@ -33,16 +33,16 @@ export class AddAnOperator extends Component {
       name: "",
       aNumber: "",
       supervisor: "",
-      schedule: "",
-      blankForm: ""
+      schedule: ""
+      // blankForm: ""
     };
   }
   handleSubmit = e => {
     e.preventDefault();
     console.log("addOp", this.state);
     this.props.addOperator({
-      name: this.state.name,
       aNumber: this.state.aNumber,
+      name: this.state.name,
       supervisor: this.state.supervisor,
       schedule: this.state.schedule
     });
@@ -58,8 +58,8 @@ export class AddAnOperator extends Component {
       value: supervisor
     }));
     const listOfSchedules = this.props.schedules.map(schedule => ({
-      label: `${schedule.daysOff} ${schedule.time}`,
-      value: `${schedule.daysOff} ${schedule.time}`
+      label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
+      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
     }));
 
     return (
@@ -70,7 +70,7 @@ export class AddAnOperator extends Component {
           <div className="card card-w-title">
             <h1>Add An Operator</h1>
             <div className="p-grid form-group" onSubmit={this.handleSubmit}>
-              <div className="p-col-12 p-md-6 ">
+              <div className="p-col-12 p-md-6">
                 <span className="md-inputfield">
                   <InputText
                     onChange={e => this.setState({ name: e.target.value })}
@@ -78,26 +78,18 @@ export class AddAnOperator extends Component {
                   <label>Name</label>
                 </span>
               </div>
-              {/* <div className="p-col-12 p-md-4">
-                <span className="md-inputfield">
-                  <InputText
-                    onChange={e =>
-                      this.setState({ aNumber: e.target.value })
-                    }
-                  />
-                  <label>Serial Number</label>
-                </span>
-              </div> */}
               <div className="p-col-12 p-md-6">
                 <span className="md-inputfield">
                   <InputText
+                    keyfilter="pint"
                     onChange={e => this.setState({ aNumber: e.target.value })}
                   />
                   <label>A#</label>
                 </span>
               </div>
+
               <div className="p-col-12 p-lg-6">
-                <div className="card card-w-title">
+                <div>
                   <h1>Supervisor</h1>
                   <Dropdown
                     options={listOfSupervisors}
@@ -110,7 +102,7 @@ export class AddAnOperator extends Component {
                 </div>
               </div>
               <div className="p-col-12 p-lg-6">
-                <div className="card card-w-title">
+                <div>
                   <h1>Schedule</h1>
                   <Dropdown
                     options={listOfSchedules}

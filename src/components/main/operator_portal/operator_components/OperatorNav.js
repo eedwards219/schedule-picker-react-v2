@@ -10,36 +10,16 @@ export default class SupervisorNav extends Component {
     this.state = {
       activeItem: null,
       items: [
-        { label: "Home", icon: "pi pi-fw pi-home", url: "/supervisor" },
+        { label: "Home", icon: "pi pi-fw pi-home", url: "/operator" },
         {
-          label: "Add An Operator",
-          icon: "pi pi-fw pi-user-plus",
-          url: "/addoperator"
+          label: "Pick Your Schedule",
+          icon: "pi pi-fw pi-calendar",
+          url: "/pick"
         },
         {
-          label: "Edit An Operator",
-          icon: "pi pi-fw pi-pencil",
-          url: "/editoperator"
-        },
-        {
-          label: "Remove an Operator",
-          icon: "pi pi-fw pi-user-minus",
-          url: "/removeoperator"
-        },
-        {
-          label: "Add a Schedule",
-          icon: "pi pi-fw pi-calendar-plus",
-          url: "/addschedule"
-        },
-        {
-          label: "Edit a Schedule",
-          icon: "pi pi-fw pi-pencil",
-          url: "/editschedule"
-        },
-        {
-          label: "Remove a Schedule",
-          icon: "pi pi-fw pi-calendar-minus",
-          url: "/removeschedule"
+          label: "My Team",
+          icon: "pi pi-fw pi-users",
+          url: "/myteam"
         },
         { label: "Settings", icon: "pi pi-fw pi-cog" }
       ]

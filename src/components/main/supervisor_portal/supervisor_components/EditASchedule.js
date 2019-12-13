@@ -30,10 +30,46 @@ export class EditASchedule extends Component {
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
 
     this.state = {
-      checkboxValue: [],
       schedule: "",
-      timeFrom: "",
-      timeTo: ""
+      checkboxValue: [],
+      daysOff: [],
+      fromHours: "",
+      fromMinutes: "",
+      untilHours: "",
+      untilMinutes: "",
+      hourOptions: [
+        { label: "00", value: "00" },
+        { label: "01", value: "01" },
+        { label: "02", value: "02" },
+        { label: "03", value: "03" },
+        { label: "04", value: "04" },
+        { label: "05", value: "05" },
+        { label: "06", value: "06" },
+        { label: "07", value: "07" },
+        { label: "08", value: "08" },
+        { label: "09", value: "09" },
+        { label: "10", value: "10" },
+        { label: "11", value: "11" },
+        { label: "12", value: "12" },
+        { label: "13", value: "13" },
+        { label: "14", value: "14" },
+        { label: "15", value: "15" },
+        { label: "16", value: "16" },
+        { label: "16", value: "16" },
+        { label: "17", value: "17" },
+        { label: "18", value: "18" },
+        { label: "19", value: "16" },
+        { label: "20", value: "20" },
+        { label: "21", value: "21" },
+        { label: "22", value: "22" },
+        { label: "23", value: "23" }
+      ],
+      minuteOptions: [
+        { label: "00", value: "00" },
+        { label: "15", value: "15" },
+        { label: "30", value: "30" },
+        { label: "45", value: "45" }
+      ]
     };
   }
   onCheckboxChange(event) {
@@ -62,8 +98,8 @@ export class EditASchedule extends Component {
     // console.log("supervisors", this.props.supervisors);
     console.log("schedules", this.props.schedules);
     const listOfSchedules = this.props.schedules.map(schedule => ({
-      label: `${schedule.daysOff} ${schedule.time}`,
-      value: `${schedule.daysOff} ${schedule.time}`
+      label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
+      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
     }));
 
     return (
@@ -181,31 +217,61 @@ export class EditASchedule extends Component {
                     <div className="p-col-12">
                       <h1>Times</h1>
                       From
-                      <Calendar
-                        placeholder="Time"
-                        timeOnly={true}
-                        showTime={true}
-                        value={this.state.timeFrom}
-                        onChange={e => this.setState({ timeFrom: e.value })}
-                      />
+                      <div className="p-grid card card-w-title">
+                        <div className="p-col-6 p-md-6">
+                          <Dropdown
+                            options={this.state.hourOptions}
+                            value={this.state.fromHours}
+                            onChange={event =>
+                              this.setState({ fromHours: event.value })
+                            }
+                            autoWidth={false}
+                          />
+                        </div>
+                        <div className="p-col-6 p-md-6">
+                          <Dropdown
+                            options={this.state.minuteOptions}
+                            value={this.state.fromMinutes}
+                            onChange={event =>
+                              this.setState({ fromMinutes: event.value })
+                            }
+                            autoWidth={false}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        to
+                        <div className="p-grid card card-w-title">
+                          <div className="p-col-6 p-md-6">
+                            <Dropdown
+                              options={this.state.hourOptions}
+                              value={this.state.untilHours}
+                              onChange={event =>
+                                this.setState({ untilHours: event.value })
+                              }
+                              autoWidth={false}
+                            />
+                          </div>
+                          <div className="p-col-6 p-md-6">
+                            <Dropdown
+                              options={this.state.minuteOptions}
+                              value={this.state.untilMinutes}
+                              onChange={event =>
+                                this.setState({ untilMinutes: event.value })
+                              }
+                              autoWidth={false}
+                            />
+                          </div>
+                        </div>
+                        <Button
+                          label="Submit"
+                          type="submit"
+                          value="Submit"
+                          style={{ margin: 5, width: "auto" }}
+                          className="indigo-btn btn"
+                        />
+                      </div>
                     </div>
-                    <div className="p-col-12">
-                      to
-                      <Calendar
-                        placeholder="Time"
-                        timeOnly={true}
-                        showTime={true}
-                        value={this.state.timeTo}
-                        onChange={e => this.setState({ timeTo: e.value })}
-                      />
-                    </div>
-                    <Button
-                      label="Submit"
-                      type="submit"
-                      value="Submit"
-                      style={{ margin: 5, width: "auto" }}
-                      className="indigo-btn btn"
-                    />
                   </div>
                 </div>
               </div>

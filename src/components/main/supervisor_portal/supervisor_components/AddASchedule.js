@@ -83,8 +83,10 @@ export class AddASchedule extends Component {
     console.log("addSched", this.state);
     this.props.addSchedule({
       daysOff: this.state.daysOff,
-      timeFrom: this.state.timeFrom,
-      timeUntil: this.state.timeUntil
+      fromHours: this.state.fromHours,
+      fromMinutes: this.state.fromMinutes,
+      untilHours: this.state.untilHours,
+      untilMinutes: this.state.untilMinutes
     });
   };
 
@@ -110,126 +112,129 @@ export class AddASchedule extends Component {
       <div className="p-grid p-fluid">
         <SupervisorNav />
         <div className="p-col-12 p-lg-6">
-          <div className="p-col-12 p-lg-12">
-            <div className="card card-w-title">
-              <h1>Add a Schedule</h1>
-              <div className="p-grid form-group" onSubmit={this.handleSubmit}>
-                <h1>Days Off</h1>
-
-                <div className="p-grid">
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Sunday"
-                      inputId="cb7"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Sunday") > -1}
-                    />
-                    <label htmlFor="cb7" className="p-checkbox-label">
-                      Sunday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Monday"
-                      inputId="cb6"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Monday") > -1}
-                    />
-                    <label htmlFor="cb6" className="p-checkbox-label">
-                      Monday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Tuesday"
-                      inputId="cb5"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Tuesday") > -1}
-                    />
-                    <label htmlFor="cb5" className="p-checkbox-label">
-                      Tuesday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Wednesday"
-                      inputId="cb4"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Wednesday") > -1}
-                    />
-                    <label htmlFor="cb4" className="p-checkbox-label">
-                      Wednesday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Thursday"
-                      inputId="cb3"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Thursday") > -1}
-                    />
-                    <label htmlFor="cb3" className="p-checkbox-label">
-                      Thursday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Friday"
-                      inputId="cb2"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Friday") > -1}
-                    />
-                    <label htmlFor="cb2" className="p-checkbox-label">
-                      Friday
-                    </label>
-                  </div>
-                  <div className="p-col-12 p-md-4">
-                    <Checkbox
-                      value="Saturday"
-                      inputId="cb1"
-                      onChange={this.onCheckboxChange}
-                      checked={this.state.daysOff.indexOf("Saturday") > -1}
-                    />
-                    <label htmlFor="cb2" className="p-checkbox-label">
-                      Saturday
-                    </label>
-                  </div>
+          {/* <div className="p-col-12 p-lg-12"> */}
+          <div className="card card-w-title">
+            <h1>Add a Schedule</h1>
+            <div className=" form-group " onSubmit={this.handleSubmit}>
+              <h1>Days Off</h1>
+              <div className="p-grid card card-w-title">
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Sunday"
+                    inputId="cb7"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Sunday") > -1}
+                  />
+                  <label htmlFor="cb7" className="p-checkbox-label">
+                    Sunday
+                  </label>
                 </div>
-
-                <div className="p-col-12 p-md-6">
-                  <h1>Times</h1>
-
-                  <div>
-                    From
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Monday"
+                    inputId="cb6"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Monday") > -1}
+                  />
+                  <label htmlFor="cb6" className="p-checkbox-label">
+                    Monday
+                  </label>
+                </div>
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Tuesday"
+                    inputId="cb5"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Tuesday") > -1}
+                  />
+                  <label htmlFor="cb5" className="p-checkbox-label">
+                    Tuesday
+                  </label>
+                </div>
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Wednesday"
+                    inputId="cb4"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Wednesday") > -1}
+                  />
+                  <label htmlFor="cb4" className="p-checkbox-label">
+                    Wednesday
+                  </label>
+                </div>
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Thursday"
+                    inputId="cb3"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Thursday") > -1}
+                  />
+                  <label htmlFor="cb3" className="p-checkbox-label">
+                    Thursday
+                  </label>
+                </div>
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Friday"
+                    inputId="cb2"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Friday") > -1}
+                  />
+                  <label htmlFor="cb2" className="p-checkbox-label">
+                    Friday
+                  </label>
+                </div>
+                <div className="p-col-12 p-md-4">
+                  <Checkbox
+                    value="Saturday"
+                    inputId="cb1"
+                    onChange={this.onCheckboxChange}
+                    checked={this.state.daysOff.indexOf("Saturday") > -1}
+                  />
+                  <label htmlFor="cb2" className="p-checkbox-label">
+                    Saturday
+                  </label>
+                </div>
+              </div>
+              {/* <div className="p-col-6 p-md-6"> */}
+              <h1>Times</h1>
+              From
+              <div className="p-grid card card-w-title">
+                <div className="p-col-6 p-md-6">
+                  <Dropdown
+                    options={this.state.hourOptions}
+                    value={this.state.fromHours}
+                    onChange={event =>
+                      this.setState({ fromHours: event.value })
+                    }
+                    autoWidth={false}
+                  />
+                </div>
+                <div className="p-col-6 p-md-6">
+                  <Dropdown
+                    options={this.state.minuteOptions}
+                    value={this.state.fromMinutes}
+                    onChange={event =>
+                      this.setState({ fromMinutes: event.value })
+                    }
+                    autoWidth={false}
+                  />
+                </div>
+              </div>
+              <div>
+                to
+                <div className="p-grid card card-w-title">
+                  <div className="p-col-6 p-md-6">
                     <Dropdown
                       options={this.state.hourOptions}
-                      value={this.state.fromHours}
+                      value={this.state.untilHours}
                       onChange={event =>
-                        this.setState({ fromHours: event.value })
-                      }
-                      autoWidth={false}
-                    />
-                    <Dropdown
-                      options={this.state.minuteOptions}
-                      value={this.state.fromMinutes}
-                      onChange={event =>
-                        this.setState({ fromMinutes: event.value })
+                        this.setState({ untilHours: event.value })
                       }
                       autoWidth={false}
                     />
                   </div>
-                  <div>
-                    to
-                    <div>
-                      <Dropdown
-                        options={this.state.hourOptions}
-                        value={this.state.untilHours}
-                        onChange={event =>
-                          this.setState({ untilHours: event.value })
-                        }
-                        autoWidth={false}
-                      />
-                    </div>
+                  <div className="p-col-6 p-md-6">
                     <Dropdown
                       options={this.state.minuteOptions}
                       value={this.state.untilMinutes}
@@ -239,14 +244,14 @@ export class AddASchedule extends Component {
                       autoWidth={false}
                     />
                   </div>
-                  <Button
-                    label="Submit"
-                    type="submit"
-                    value="Submit"
-                    style={{ margin: 5, width: "auto" }}
-                    className="indigo-btn btn"
-                  />
                 </div>
+                <Button
+                  label="Submit"
+                  type="submit"
+                  value="Submit"
+                  style={{ margin: 5, width: "auto" }}
+                  className="indigo-btn btn"
+                />
               </div>
             </div>
           </div>

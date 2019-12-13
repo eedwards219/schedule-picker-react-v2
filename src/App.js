@@ -35,6 +35,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import RemoveAnOperator from "./components/main/supervisor_portal/supervisor_components/RemoveAnOperator";
 import RemoveASchedule from "./components/main/supervisor_portal/supervisor_components/RemoveASchedule";
 import PickYourSchedule from "./components/main/operator_portal/operator_components/PickYourSchedule";
+import FinalizeSchedule from "./components/main/supervisor_portal/supervisor_components/FinalizeSchedule";
 
 class App extends Component {
   componentDidMount() {
@@ -754,6 +755,7 @@ class App extends Component {
                 <Route path="/removeschedule" component={RemoveASchedule} />
                 <Route path="/removeoperator" component={RemoveAnOperator} />
                 <Route path="/pick" component={PickYourSchedule} />
+                <Route path="/finalize" component={FinalizeSchedule} />
               </Switch>
             </div>
           </Router>

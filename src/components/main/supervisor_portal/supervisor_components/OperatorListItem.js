@@ -17,7 +17,7 @@ export class OperatorListItem extends Component {
     //   )
     // );
 
-    console.log("OLIprops", this.props);
+    // console.log("OLIprops", this.props);
     // console.log("opsched", operatorSchedule);
 
     const header = (

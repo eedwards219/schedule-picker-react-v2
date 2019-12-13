@@ -10,7 +10,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { fetchAllSchedules } from "../../../../store/schedules/actions";
 
-class ScheduleList extends Component {
+class MyTeam extends Component {
   state = {
     filterPhrase: "",
     filterBy: "name",
@@ -32,13 +32,6 @@ class ScheduleList extends Component {
   render() {
     console.log("fetchAllOperators", this.fetchAllOperators);
     console.log("SLprops", this.props);
-
-    // let showSchedules = this.props.schedules
-    //   .filter(schedule => schedule.daysOff.includes(this.state.filterPhrase))
-    //   .filter(schedule => this.props.schedules.length)
-    //   .map(schedule => (
-    //     <ScheduleListItem key={schedule.id} schedule={schedule} />
-    //   ));
 
     const listOfSchedules = this.props.schedules.map(schedule => ({
       Times: `${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
@@ -109,7 +102,7 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.filter(schedule => schedule.id)
   };
 };
-export default connect(mapStateToProps, { fetchAllSchedules })(ScheduleList);
+export default connect(mapStateToProps, { fetchAllSchedules })(MyTeam);
 
 {
   /* <div className="p-col-12">

@@ -29,12 +29,12 @@ class Main extends Component {
         <div className="content-section implementation ">
           <div>
             <Link to={"/supervisor"}>
-              <Card className="card block">
+              <Card className="card block p-col-4">
                 <h1>Supervisors</h1>
               </Card>
             </Link>
             <Link to={"/operator"}>
-              <Card className="card block">
+              <Card className="card block p-col-4">
                 <h1>Operators</h1>
               </Card>
             </Link>
