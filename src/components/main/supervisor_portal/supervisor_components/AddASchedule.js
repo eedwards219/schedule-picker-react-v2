@@ -115,7 +115,7 @@ export class AddASchedule extends Component {
           {/* <div className="p-col-12 p-lg-12"> */}
           <div className="card card-w-title">
             <h1>Add a Schedule</h1>
-            <div className=" form-group " onSubmit={this.handleSubmit}>
+            <div className=" form-group ">
               <h1>Days Off</h1>
               <div className="p-grid card card-w-title">
                 <div className="p-col-12 p-md-4">
@@ -248,7 +248,8 @@ export class AddASchedule extends Component {
                 <Button
                   label="Submit"
                   type="submit"
-                  value="Submit"
+                  // value="Submit"
+                  onClick={this.handleSubmit}
                   style={{ margin: 5, width: "auto" }}
                   className="indigo-btn btn"
                 />

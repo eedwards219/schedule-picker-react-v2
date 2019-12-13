@@ -36,6 +36,14 @@ function schedulesReducer(state = initialState, action) {
         ...state,
         all: state.all.filter(schedule => schedule.id === action.payload.id)
       };
+    case types.EDIT_SCHEDULES_SUCCESS:
+      return {
+        ...state,
+        all: [
+          action.payload,
+          ...state.all.filter(schedule => schedule.id !== action.payload.id)
+        ]
+      };
 
     default:
       return state;

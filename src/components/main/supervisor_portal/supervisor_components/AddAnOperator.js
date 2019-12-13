@@ -69,7 +69,7 @@ export class AddAnOperator extends Component {
         <div className="p-col-12 p-lg-6">
           <div className="card card-w-title">
             <h1>Add An Operator</h1>
-            <div className="p-grid form-group" onSubmit={this.handleSubmit}>
+            <div className="p-grid form-group">
               <div className="p-col-12 p-md-6">
                 <span className="md-inputfield">
                   <InputText
@@ -119,6 +119,7 @@ export class AddAnOperator extends Component {
               value="Submit"
               style={{ marginBottom: 10, width: "auto" }}
               className="indigo-btn btn"
+              onClick={this.handleSubmit}
             />
           </div>
         </div>

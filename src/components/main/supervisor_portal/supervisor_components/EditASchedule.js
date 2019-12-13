@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 // import logo from "../../../../logo.svg";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
-import { addOperator } from "../../../../store/operators/actions";
+import { editSchedule } from "../../../../store/schedules/actions";
 import SupervisorNav from "./SupervisorNav";
 
 export class EditASchedule extends Component {
@@ -31,7 +31,6 @@ export class EditASchedule extends Component {
 
     this.state = {
       schedule: "",
-      checkboxValue: [],
       daysOff: [],
       fromHours: "",
       fromMinutes: "",
@@ -73,33 +72,36 @@ export class EditASchedule extends Component {
     };
   }
   onCheckboxChange(event) {
-    let selected = [...this.state.checkboxValue];
+    let selected = [...this.state.daysOff];
     if (event.checked) selected.push(event.value);
     else selected.splice(selected.indexOf(event.value), 1);
 
-    this.setState({ checkboxValue: selected });
+    this.setState({ daysOff: selected });
   }
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   this.state.addOperator({
-  //     name: this.state.name,
-  //     serialNumber: this.state.serialNumber,
-  //     hireDate: this.state.hireDate,
-  //     supervisor: this.state.supervisor,
-  //     schedule: this.state.schedule
-  //   });
-  //   // this.setState({ blankForm: " " });
-  // };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.editSchedule(
+      {
+        daysOff: this.state.daysOff,
+        fromHours: this.state.fromHours,
+        fromMinutes: this.state.fromMinutes,
+        untilHours: this.state.untilHours,
+        untilMinutes: this.state.untilMinutes
+      },
+      this.state.schedule
+    );
+    // this.setState({ blankForm: " " });
+  };
 
   render() {
-    console.log("addprops", this.props);
-    // console.log("addstate", this.state);
+    console.log("editschedprops", this.props);
+    console.log("editschedstate", this.state);
     // console.log("supervisors", this.props.supervisors);
     console.log("schedules", this.props.schedules);
     const listOfSchedules = this.props.schedules.map(schedule => ({
       label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
-      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
+      value: `${schedule.id}`
     }));
 
     return (
@@ -128,9 +130,7 @@ export class EditASchedule extends Component {
                         value="Sunday"
                         inputId="cb7"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Sunday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Sunday") > -1}
                       />
                       <label htmlFor="cb7" className="p-checkbox-label">
                         Sunday
@@ -141,9 +141,7 @@ export class EditASchedule extends Component {
                         value="Monday"
                         inputId="cb6"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Monday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Monday") > -1}
                       />
                       <label htmlFor="cb6" className="p-checkbox-label">
                         Monday
@@ -154,9 +152,7 @@ export class EditASchedule extends Component {
                         value="Tuesday"
                         inputId="cb5"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Tuesday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Tuesday") > -1}
                       />
                       <label htmlFor="cb5" className="p-checkbox-label">
                         Tuesday
@@ -167,9 +163,7 @@ export class EditASchedule extends Component {
                         value="Wednesday"
                         inputId="cb4"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Wednesday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Wednesday") > -1}
                       />
                       <label htmlFor="cb4" className="p-checkbox-label">
                         Wednesday
@@ -180,9 +174,7 @@ export class EditASchedule extends Component {
                         value="Thursday"
                         inputId="cb3"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Thursday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Thursday") > -1}
                       />
                       <label htmlFor="cb3" className="p-checkbox-label">
                         Thursday
@@ -193,9 +185,7 @@ export class EditASchedule extends Component {
                         value="Friday"
                         inputId="cb2"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Friday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Friday") > -1}
                       />
                       <label htmlFor="cb2" className="p-checkbox-label">
                         Friday
@@ -206,9 +196,7 @@ export class EditASchedule extends Component {
                         value="Saturday"
                         inputId="cb1"
                         onChange={this.onCheckboxChange}
-                        checked={
-                          this.state.checkboxValue.indexOf("Saturday") > -1
-                        }
+                        checked={this.state.daysOff.indexOf("Saturday") > -1}
                       />
                       <label htmlFor="cb2" className="p-checkbox-label">
                         Saturday
@@ -222,6 +210,7 @@ export class EditASchedule extends Component {
                           <Dropdown
                             options={this.state.hourOptions}
                             value={this.state.fromHours}
+                            label={this.state.hourOptions}
                             onChange={event =>
                               this.setState({ fromHours: event.value })
                             }
@@ -232,6 +221,7 @@ export class EditASchedule extends Component {
                           <Dropdown
                             options={this.state.minuteOptions}
                             value={this.state.fromMinutes}
+                            label={this.state.minuteOptions}
                             onChange={event =>
                               this.setState({ fromMinutes: event.value })
                             }
@@ -246,6 +236,7 @@ export class EditASchedule extends Component {
                             <Dropdown
                               options={this.state.hourOptions}
                               value={this.state.untilHours}
+                              label={this.state.hourOptions}
                               onChange={event =>
                                 this.setState({ untilHours: event.value })
                               }
@@ -256,6 +247,7 @@ export class EditASchedule extends Component {
                             <Dropdown
                               options={this.state.minuteOptions}
                               value={this.state.untilMinutes}
+                              label={this.state.minuteOptions}
                               onChange={event =>
                                 this.setState({ untilMinutes: event.value })
                               }
@@ -269,6 +261,7 @@ export class EditASchedule extends Component {
                           value="Submit"
                           style={{ margin: 5, width: "auto" }}
                           className="indigo-btn btn"
+                          onClick={this.handleSubmit}
                         />
                       </div>
                     </div>
@@ -291,4 +284,4 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.filter(schedule => schedule)
   };
 };
-export default connect(mapStateToProps)(EditASchedule);
+export default connect(mapStateToProps, { editSchedule })(EditASchedule);

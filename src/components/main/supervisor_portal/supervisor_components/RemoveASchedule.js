@@ -10,37 +10,25 @@ import { Dropdown } from "primereact/dropdown";
 import { removeSchedule } from "../../../../store/schedules/actions";
 import SupervisorNav from "./SupervisorNav";
 
-export class RemoveAnOperator extends Component {
+export class RemoveASchedule extends Component {
   constructor() {
     super();
 
     this.state = {
-      name: "",
-      aNumber: "",
-      supervisor: "",
-      schedule: "",
-      blankForm: ""
+      schedule: ""
     };
   }
-  handleSubmit = e => {
+  handleClick = e => {
     e.preventDefault();
-    console.log("addOp", this.state);
-    this.props.addOperator({
-      name: this.state.name,
-      aNumber: this.state.aNumber,
-      supervisor: this.state.supervisor,
-      schedule: this.state.schedule
-    });
+    this.props.removeSchedule(this.state.schedule);
   };
 
   render() {
     console.log("thisstate", this.state);
-    // console.log("addprops", this.props);
-    // console.log("schedules", this.props.schedules);
 
     const listOfSchedules = this.props.schedules.map(schedule => ({
       label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
-      value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
+      value: `${schedule.id}`
     }));
 
     return (
@@ -50,7 +38,7 @@ export class RemoveAnOperator extends Component {
         <div className="p-col-6 p-lg-6">
           <div className="card card-w-title">
             <h1>Remove A Schedule</h1>
-            <div className="p-grid form-group" onSubmit={this.handleSubmit}>
+            <div className="p-grid form-group">
               <div className="p-col-6 p-md-6 ">
                 <Dropdown
                   options={listOfSchedules}
@@ -67,6 +55,7 @@ export class RemoveAnOperator extends Component {
               value="Submit"
               style={{ marginBottom: 10, width: "auto" }}
               className="indigo-btn btn"
+              onClick={this.handleClick}
             />
           </div>
         </div>
@@ -85,4 +74,4 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.map(schedule => schedule)
   };
 };
-export default connect(mapStateToProps, { removeSchedule })(RemoveAnOperator);
+export default connect(mapStateToProps, { removeSchedule })(RemoveASchedule);

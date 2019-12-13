@@ -18,31 +18,31 @@ export class RemoveAnOperator extends Component {
       operator: ""
     };
   }
-  handleSubmit = e => {
+  handleClick = e => {
     e.preventDefault();
     console.log("removeOp", this.state);
-    this.props.removeOperator({});
+    this.props.removeOperator(this.state.operator);
   };
 
   render() {
-    console.log("thisstate", this.state);
-    // console.log("addprops", this.props);
+    console.log("removestate", this.state);
+    console.log("removeprops", this.props);
     // console.log("schedules", this.props.schedules);
 
     const listOfOperators = this.props.operators.map(operator => ({
       label: `${operator.name} ${operator.aNumber}`,
-      value: `${operator.name} ${operator.aNumber}`
+      value: `${operator.id}`
     }));
 
     return (
       <div className="p-grid p-fluid ">
         <SupervisorNav />
 
-        <div className="p-col-6 p-lg-6">
+        <div className="p-col-10 p-lg-10">
           <div className="card card-w-title">
             <h1>Remove An Operator</h1>
-            <div className="p-grid form-group" onSubmit={this.handleSubmit}>
-              <div className="p-col-6 p-md-6 ">
+            <div className="p-grid form-group">
+              <div className="p-col-10 p-md-10 ">
                 <Dropdown
                   options={listOfOperators}
                   value={this.state.operator}
@@ -58,6 +58,7 @@ export class RemoveAnOperator extends Component {
               value="Submit"
               style={{ marginBottom: 10, width: "auto" }}
               className="indigo-btn btn"
+              onClick={this.handleClick}
             />
           </div>
         </div>

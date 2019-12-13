@@ -73,3 +73,20 @@ export const removeSchedule = id => async dispatch => {
     });
   }
 };
+export const editSchedule = (updatedSchedule, id) => async dispatch => {
+  dispatch({
+    type: types.EDIT_SCHEDULES_PENDING
+  });
+  try {
+    let response = await axios.patch(BASE_URL + `/${id}`, updatedSchedule);
+    dispatch({
+      type: types.EDIT_SCHEDULES_SUCCESS,
+      payload: response.data
+    });
+  } catch (err) {
+    dispatch({
+      type: types.EDIT_SCHEDULES_FAILED,
+      payload: err
+    });
+  }
+};

@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 // import logo from "../../../../logo.svg";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
-import { addOperator } from "../../../../store/operators/actions";
+import { editOperator } from "../../../../store/operators/actions";
 import SupervisorNav from "./SupervisorNav";
 
 export class EditAnOperator extends Component {
@@ -39,20 +39,21 @@ export class EditAnOperator extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    this.state.addOperator({
-      name: this.state.name,
-      aNumber: this.state.serialNumber,
-      supervisor: this.state.supervisor,
-      schedule: this.state.schedule
-    });
+    this.props.editOperator(
+      {
+        name: this.state.name,
+        aNumber: this.state.aNumber,
+        supervisor: this.state.supervisor,
+        schedule: this.state.schedule
+      },
+      this.state.aNumber
+    );
     // this.setState({ blankForm: " " });
   };
 
   render() {
-    // console.log("addprops", this.props);
-    console.log("addstate", this.state);
-    // console.log("supervisors", this.props.supervisors);
-    console.log("schedules", this.props.schedules);
+    console.log("editopprops", this.props);
+    console.log("editopstate", this.state);
     const listOfSchedules = this.props.schedules.map(schedule => ({
       label: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`,
       value: `${schedule.daysOff} ${schedule.fromHours} ${schedule.fromMinutes} - ${schedule.untilHours} ${schedule.untilMinutes}`
@@ -139,6 +140,7 @@ export class EditAnOperator extends Component {
                   value="Submit"
                   style={{ marginBottom: 10, width: "auto" }}
                   className="indigo-btn btn"
+                  onClick={this.handleSubmit}
                 />
               </div>
             </div>
@@ -157,4 +159,4 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.map(schedule => schedule)
   };
 };
-export default connect(mapStateToProps)(EditAnOperator);
+export default connect(mapStateToProps, { editOperator })(EditAnOperator);
