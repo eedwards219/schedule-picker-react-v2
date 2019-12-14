@@ -4,7 +4,6 @@ import { AppTopbar } from "./AppTopbar";
 import { AppFooter } from "./AppFooter";
 import { AppMenu } from "./AppMenu";
 import { AppBreadcrumb } from "./AppBreadcrumb";
-// import { Route } from "react-router-dom";
 import DomHandler from "primereact/components/utils/DomHandler";
 import { ScrollPanel } from "primereact/components/scrollpanel/ScrollPanel";
 import { withRouter } from "react-router";
@@ -15,7 +14,7 @@ import "primereact/resources/primereact.min.css";
 import "primeflex/primeflex.css";
 import "./ripple.js";
 import "./App.css";
-import Main from "./components/Main";
+import Login from "./components/Login";
 import supervisorPortal from "./components/main/supervisor_portal/SupervisorPortal";
 import operatorPortal from "./components/main/operator_portal/OperatorPortal";
 import OperatorListItem from "./components/main/supervisor_portal/supervisor_components/OperatorListItem";
@@ -36,6 +35,9 @@ import RemoveAnOperator from "./components/main/supervisor_portal/supervisor_com
 import RemoveASchedule from "./components/main/supervisor_portal/supervisor_components/RemoveASchedule";
 import PickYourSchedule from "./components/main/operator_portal/operator_components/PickYourSchedule";
 import FinalizeSchedule from "./components/main/supervisor_portal/supervisor_components/FinalizeSchedule";
+import AddASupervisor from "./components/main/supervisor_portal/supervisor_components/AddASupervisor";
+import EditASupervisor from "./components/main/supervisor_portal/supervisor_components/EditASupervisor";
+import RemoveASupervisor from "./components/main/supervisor_portal/supervisor_components/RemoveASupervisor";
 
 class App extends Component {
   componentDidMount() {
@@ -741,19 +743,13 @@ class App extends Component {
           <Router history={History}>
             <div className="layout-content">
               <Switch>
-                <Route path="/" exact component={Main} />
+                <Route path="/" exact component={Login} />
                 <Route path="/supervisor" component={supervisorPortal} />
                 <Route path="/operator" component={operatorPortal} />
+
                 <Route path="/oli" component={OperatorListItem} />
                 <Route path="/sli" component={ScheduleListItem} />
-                <Route path="/sl" component={ScheduleList} />
-                <Route path="/ol" component={OperatorList} />
-                <Route path="/addoperator" component={AddAnOperator} />
-                <Route path="/addschedule" component={AddASchedule} />
-                <Route path="/editoperator" component={EditAnOperator} />
-                <Route path="/editschedule" component={EditASchedule} />
-                <Route path="/removeschedule" component={RemoveASchedule} />
-                <Route path="/removeoperator" component={RemoveAnOperator} />
+
                 <Route path="/pick" component={PickYourSchedule} />
                 <Route path="/finalize" component={FinalizeSchedule} />
               </Switch>

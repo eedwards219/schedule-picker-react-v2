@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 // import logo from "../../../../logo.svg";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
-import { addOperator } from "../../../../store/operators/actions";
+import { addSupervisor } from "../../../../store/supervisors/actions";
 import SupervisorNav from "./SupervisorNav";
 
-export class AddAnOperator extends Component {
+export class AddASupervisor extends Component {
   constructor() {
     super();
 
@@ -40,12 +40,11 @@ export class AddAnOperator extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log("addOp", this.state);
-    this.props.addOperator({
+    this.props.addSupervisor({
       aNumber: this.state.aNumber,
       name: this.state.name,
-      supervisor: this.state.supervisor,
       schedule: this.state.schedule,
-      role: "operator"
+      role: "supervisor"
     });
   };
 
@@ -69,7 +68,7 @@ export class AddAnOperator extends Component {
 
         <div className="p-col-12 p-lg-6">
           <div className="card card-w-title">
-            <h1>Add An Operator</h1>
+            <h1>Add A Supervisor</h1>
             <div className="p-grid form-group">
               <div className="p-col-12 p-md-6">
                 <span className="md-inputfield">
@@ -89,19 +88,6 @@ export class AddAnOperator extends Component {
                 </span>
               </div>
 
-              <div className="p-col-12 p-lg-6">
-                <div>
-                  <h1>Supervisor</h1>
-                  <Dropdown
-                    options={listOfSupervisors}
-                    value={this.state.supervisor}
-                    onChange={event =>
-                      this.setState({ supervisor: event.value })
-                    }
-                    autoWidth={false}
-                  />
-                </div>
-              </div>
               <div className="p-col-12 p-lg-6">
                 <div>
                   <h1>Schedule</h1>
@@ -139,4 +125,4 @@ const mapStateToProps = state => {
     schedules: state.schedules.all.map(schedule => schedule)
   };
 };
-export default connect(mapStateToProps, { addOperator })(AddAnOperator);
+export default connect(mapStateToProps, { addSupervisor })(AddASupervisor);

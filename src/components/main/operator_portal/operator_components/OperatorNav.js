@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 // import logo from "../../../logo.svg";
 import { TabMenu } from "primereact/tabmenu";
 
-export default class SupervisorNav extends Component {
+export default class OperatorNav extends Component {
   constructor() {
     super();
     this.state = {

@@ -73,3 +73,20 @@ export const removeSupervisor = id => async dispatch => {
     });
   }
 };
+export const editSupervisor = (updatedSupervisor, id) => async dispatch => {
+  dispatch({
+    type: types.EDIT_SUPERVISOR_PENDING
+  });
+  try {
+    let response = await axios.patch(BASE_URL + `/${id}`, updatedSupervisor);
+    dispatch({
+      type: types.EDIT_SUPERVISOR_SUCCESS,
+      payload: response.data
+    });
+  } catch (err) {
+    dispatch({
+      type: types.EDIT_SUPERVISOR_FAILED,
+      payload: err
+    });
+  }
+};
