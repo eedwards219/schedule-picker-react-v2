@@ -167,477 +167,77 @@ class App extends Component {
 
   createMenu() {
     this.menu = [
-      { label: "Dashboard", icon: "dashboard", to: "/" },
+      { label: "Dashboard", icon: "dashboard", to: "/supervisor" },
       {
-        label: "Menu Modes",
-        icon: "settings",
+        label: "Operators",
+        icon: "person",
         items: [
           {
-            label: "Static Menu",
-            icon: "view_quilt",
-            command: event => {
-              this.setState({ layoutMode: "static" });
-            }
+            label: "Add An Operator",
+            to: "/supervisor/addoperator",
+            icon: "person_add"
+          },
+
+          {
+            label: "Edit An Operator",
+            to: "/supervisor/editoperator",
+            icon: "edit"
           },
           {
-            label: "Overlay Menu",
-            icon: "flip_to-front",
-            command: event => {
-              this.setState({ layoutMode: "overlay" });
-            }
-          },
-          {
-            label: "Horizontal Menu",
-            icon: "border_horizontal",
-            command: () => this.setState({ layoutMode: "horizontal" })
-          },
-          {
-            label: "Light Menu",
-            icon: "label",
-            command: event => {
-              this.setState({ darkMenu: false });
-            }
-          },
-          {
-            label: "Dark Menu",
-            icon: "label_outline",
-            command: event => {
-              this.setState({ darkMenu: true });
-            }
+            label: "Remove An Operator",
+            to: "/supervisor/removeoperator",
+            icon: "remove_circle_outline"
           }
         ]
       },
       {
-        label: "Colors",
-        icon: "palette",
+        label: "Supervisors",
+        icon: "supervisor_account",
         items: [
           {
-            label: "Layout Palette",
-            icon: "palette",
-            items: [
-              {
-                label: "Flat",
-                icon: "format_paint",
-                items: [
-                  {
-                    label: "Blue Grey - Green",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("bluegrey");
-                    }
-                  },
-                  {
-                    label: "Indigo - Pink",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("indigo");
-                    }
-                  },
-                  {
-                    label: "Pink - Amber",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("pink");
-                    }
-                  },
-                  {
-                    label: "Deep Purple - Orange",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("deeppurple");
-                    }
-                  },
-                  {
-                    label: "Blue - Amber",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("blue");
-                    }
-                  },
-                  {
-                    label: "Light Blue - Blue Grey",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("lightblue");
-                    }
-                  },
-                  {
-                    label: "Cyan - Amber",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("cyan");
-                    }
-                  },
-                  {
-                    label: "Teal - Red",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("teal");
-                    }
-                  },
-                  {
-                    label: "Green - Brown",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("green");
-                    }
-                  },
-                  {
-                    label: "Light Green - Purple",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("lightgreen");
-                    }
-                  },
-                  {
-                    label: "Lime - Blue Grey",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("lime");
-                    }
-                  },
-                  {
-                    label: "Yellow - Teal",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("yellow");
-                    }
-                  },
-                  {
-                    label: "Amber - Pink",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("amber");
-                    }
-                  },
-                  {
-                    label: "Orange - Indigo",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("orange");
-                    }
-                  },
-                  {
-                    label: "Deep Orange - Cyan",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("deeporange");
-                    }
-                  },
-                  {
-                    label: "Brown - Cyan",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("brown");
-                    }
-                  },
-                  {
-                    label: "Grey - Indigo",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("grey");
-                    }
-                  }
-                ]
-              },
-              {
-                label: "Special",
-                icon: "format_paint",
-                items: [
-                  {
-                    label: "Reflection",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("reflection");
-                    }
-                  },
-                  {
-                    label: "Moody",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("moody");
-                    }
-                  },
-                  {
-                    label: "Cityscape",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("cityscape");
-                    }
-                  },
-                  {
-                    label: "Cloudy",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("cloudy");
-                    }
-                  },
-                  {
-                    label: "Storm",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("storm");
-                    }
-                  },
-                  {
-                    label: "Palm",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("palm");
-                    }
-                  },
-                  {
-                    label: "Flatiron",
-                    icon: "brush",
-                    command: event => {
-                      this.changeLayout("flatiron");
-                    }
-                  }
-                ]
-              }
-            ]
+            label: "Add A Supervisor",
+            to: "/supervisor/addsupervisor",
+            icon: "person_add"
+          },
+
+          {
+            label: "Edit A Supervisor",
+            to: "/supervisor/editsupervisor",
+            icon: "edit"
           },
           {
-            label: "Themes",
-            icon: "brush",
-            badge: "5",
-            items: [
-              {
-                label: "Blue Grey - Green",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("bluegrey");
-                }
-              },
-              {
-                label: "Indigo - Pink",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("indigo");
-                }
-              },
-              {
-                label: "Pink - Amber",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("pink");
-                }
-              },
-              {
-                label: "Purple - Pink",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("purple");
-                }
-              },
-              {
-                label: "Deep Purple - Orange",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("deeppurple");
-                }
-              },
-              {
-                label: "Blue - Amber",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("blue");
-                }
-              },
-              {
-                label: "Light Blue - Blue Grey",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("lightblue");
-                }
-              },
-              {
-                label: "Cyan - Amber",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("cyan");
-                }
-              },
-              {
-                label: "Teal - Red",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("teal");
-                }
-              },
-              {
-                label: "Green - Brown",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("green");
-                }
-              },
-              {
-                label: "Light Green - Purple",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("lightgreen");
-                }
-              },
-              {
-                label: "Lime - Blue Grey",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("lime");
-                }
-              },
-              {
-                label: "Yellow - Teal",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("yellow");
-                }
-              },
-              {
-                label: "Amber - Pink",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("amber");
-                }
-              },
-              {
-                label: "Orange - Indigo",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("orange");
-                }
-              },
-              {
-                label: "Deep Orange - Cyan",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("deeporange");
-                }
-              },
-              {
-                label: "Brown - Cyan",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("brown");
-                }
-              },
-              {
-                label: "Grey - Indigo",
-                icon: "brush",
-                command: event => {
-                  this.changeTheme("grey");
-                }
-              }
-            ]
+            label: "Remove A Supervisor",
+            to: "/supervisor/removesupervisor",
+            icon: "remove_circle_outline"
           }
         ]
       },
       {
-        label: "Components",
-        icon: "list",
-        badge: "2",
-        badgeStyleClass: "teal-badge",
+        label: "Schedules",
+        icon: "schedule",
         items: [
-          { label: "Sample Page", icon: "desktop_mac", to: "/sample" },
-          { label: "Forms", icon: "input", to: "/forms" },
-          { label: "Data", icon: "grid_on", to: "/data" },
-          { label: "Panels", icon: "content_paste", to: "/panels" },
-          { label: "Overlays", icon: "content_copy", to: "/overlays" },
-          { label: "Menus", icon: "menu", to: "/menus" },
-          { label: "Messages", icon: "message", to: "/messages" },
-          { label: "Charts", icon: "insert_chart", to: "/charts" },
-          { label: "Misc", icon: "toys", to: "/misc" }
-        ]
-      },
-      {
-        label: "Template Pages",
-        icon: "get_app",
-        items: [
-          { label: "Empty Page", icon: "hourglass_empty", to: "/empty" },
           {
-            label: "Landing Page",
-            icon: "flight_land",
-            url: "assets/pages/landing.html",
-            target: "_blank"
+            label: "Add A Schedule",
+            to: "/supervisor/addschedule",
+            icon: "add"
           },
-          { label: "Login Page", icon: "verified_user", to: "/login" },
-          { label: "Error Page", icon: "error", to: "/error" },
-          { label: "404 Page", icon: "error_outline", to: "/notfound" },
-          { label: "Access Denied Page", icon: "security", to: "/access" }
-        ]
-      },
-      {
-        label: "Menu Hierarchy",
-        icon: "menu",
-        items: [
+
           {
-            label: "Submenu 1",
-            icon: "subject",
-            items: [
-              {
-                label: "Submenu 1.1",
-                icon: "subject",
-                items: [
-                  { label: "Submenu 1.1.1", icon: "subject" },
-                  { label: "Submenu 1.1.2", icon: "subject" },
-                  { label: "Submenu 1.1.3", icon: "subject" }
-                ]
-              },
-              {
-                label: "Submenu 1.2",
-                icon: "subject",
-                items: [
-                  { label: "Submenu 1.2.1", icon: "subject" },
-                  { label: "Submenu 1.2.2", icon: "subject" }
-                ]
-              }
-            ]
+            label: "Edit A Schedule",
+            to: "/supervisor/editschedule",
+            icon: "edit"
           },
           {
-            label: "Submenu 2",
-            icon: "subject",
-            items: [
-              {
-                label: "Submenu 2.1",
-                icon: "subject",
-                items: [
-                  { label: "Submenu 2.1.1", icon: "subject" },
-                  { label: "Submenu 2.1.2", icon: "subject" },
-                  { label: "Submenu 2.1.3", icon: "subject" }
-                ]
-              },
-              {
-                label: "Submenu 2.2",
-                icon: "subject",
-                items: [
-                  { label: "Submenu 2.2.1", icon: "subject" },
-                  { label: "Submenu 2.2.2", icon: "subject" }
-                ]
-              }
-            ]
+            label: "Remove A Schedule",
+            to: "/supervisor/removeschedule",
+            icon: "remove_circle_outline"
+          },
+          {
+            label: "Finalize A Schedule",
+            to: "/supervisor/finalize",
+            icon: "check"
           }
         ]
-      },
-      {
-        label: "Utils",
-        icon: "build",
-        command: () => {
-          window.location = "#/utils";
-        }
-      },
-      {
-        label: "Docs",
-        icon: "find_in_page",
-        command: () => {
-          window.location = "#/documentation";
-        }
-      },
-      {
-        label: "Buy Now",
-        icon: "credit_card",
-        command: () => {
-          window.location = "https://www.primefaces.org/store";
-        }
       }
     ];
   }
@@ -692,77 +292,74 @@ class App extends Component {
     let History = createBrowserHistory();
 
     return (
-      <div className={wrapperClass} onClick={this.onWrapperClick}>
-        <div
-          ref={el => (this.sidebar = el)}
-          className={sidebarClassName}
-          onClick={this.onSidebarClick}
-          onMouseEnter={this.onSidebarMouseEnter}
-          onMouseLeave={this.onSidebarMouseLeave}
-        >
-          <div className="sidebar-logo">
-            <button className="p-link">
-              <img alt="logo" src="assets/layout/images/logo-slim.png" />
-              <span className="app-name">SERENITY</span>
-            </button>
-            <button
-              className="p-link sidebar-anchor"
-              title="Toggle Menu"
-              onClick={this.onToggleMenuClick}
-            >
-              {" "}
-            </button>
-          </div>
-
-          <ScrollPanel
-            ref={el => (this.layoutMenuScroller = el)}
-            style={{ height: "100%" }}
+      <Router>
+        <div className={wrapperClass} onClick={this.onWrapperClick}>
+          <div
+            ref={el => (this.sidebar = el)}
+            className={sidebarClassName}
+            onClick={this.onSidebarClick}
+            onMouseEnter={this.onSidebarMouseEnter}
+            onMouseLeave={this.onSidebarMouseLeave}
           >
-            <div className="layout-menu-container">
-              <AppMenu
-                model={this.menu}
-                onRootMenuItemClick={this.onRootMenuItemClick}
-                layoutMode={this.state.layoutMode}
-                active={this.state.menuActive}
-                onMenuItemClick={this.onMenuItemClick}
-              />
+            <div className="sidebar-logo">
+              <button className="p-link">
+                <img alt="logo" src="assets/layout/images/logo-slim.png" />
+                <span className="app-name">SERENITY</span>
+              </button>
+              <button
+                className="p-link sidebar-anchor"
+                title="Toggle Menu"
+                onClick={this.onToggleMenuClick}
+              >
+                {" "}
+              </button>
             </div>
-          </ScrollPanel>
-        </div>
-        <div className="layout-main">
-          <AppTopbar
-            layoutMode={this.state.layoutMode}
-            activeTopbarItem={this.state.activeTopbarItem}
-            onTopbarItemClick={this.onTopbarItemClick}
-            onMenuButtonClick={this.onMenuButtonClick}
-            onTopbarMobileMenuButtonClick={this.onTopbarMobileMenuButtonClick}
-            topbarMenuActive={this.state.topbarMenuActive}
-          />
 
-          <AppBreadCrumbWithRouter />
-          <Router history={History}>
+            <ScrollPanel
+              ref={el => (this.layoutMenuScroller = el)}
+              style={{ height: "100%" }}
+            >
+              <div className="layout-menu-container">
+                <AppMenu
+                  model={this.menu}
+                  onRootMenuItemClick={this.onRootMenuItemClick}
+                  layoutMode={this.state.layoutMode}
+                  active={this.state.menuActive}
+                  onMenuItemClick={this.onMenuItemClick}
+                />
+              </div>
+            </ScrollPanel>
+          </div>
+          <div className="layout-main">
+            <AppTopbar
+              layoutMode={this.state.layoutMode}
+              activeTopbarItem={this.state.activeTopbarItem}
+              onTopbarItemClick={this.onTopbarItemClick}
+              onMenuButtonClick={this.onMenuButtonClick}
+              onTopbarMobileMenuButtonClick={this.onTopbarMobileMenuButtonClick}
+              topbarMenuActive={this.state.topbarMenuActive}
+            />
+
+            <AppBreadCrumbWithRouter />
             <div className="layout-content">
               <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/supervisor" component={supervisorPortal} />
                 <Route path="/operator" component={operatorPortal} />
 
-                <Route path="/oli" component={OperatorListItem} />
-                <Route path="/sli" component={ScheduleListItem} />
-
-                <Route path="/pick" component={PickYourSchedule} />
-                <Route path="/finalize" component={FinalizeSchedule} />
+                {/* <Route path="/oli" component={OperatorListItem} />
+                <Route path="/sli" component={ScheduleListItem} /> */}
               </Switch>
             </div>
-          </Router>
 
-          <AppFooter />
+            <AppFooter />
 
-          {this.state.mobileMenuActive && (
-            <div className="layout-main-mask"></div>
-          )}
+            {this.state.mobileMenuActive && (
+              <div className="layout-main-mask"></div>
+            )}
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

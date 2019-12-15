@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AppWrapper from "./AppWrapper";
+import App from "./App";
 import { HashRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import "babel-polyfill";
@@ -11,9 +11,7 @@ import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
-      <AppWrapper></AppWrapper>
-    </HashRouter>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

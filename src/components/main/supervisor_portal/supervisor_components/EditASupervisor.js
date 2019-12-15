@@ -69,7 +69,6 @@ export class EditASupervisor extends Component {
 
     return (
       <div className="p-grid p-fluid ">
-        <SupervisorNav />
         <div className="p-col-12 p-lg-6">
           <div className="card card-w-title">
             <h1>Edit A Supervisor</h1>

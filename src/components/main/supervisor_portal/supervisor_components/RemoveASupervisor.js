@@ -36,8 +36,6 @@ export class RemoveASupervisor extends Component {
 
     return (
       <div className="p-grid p-fluid ">
-        <SupervisorNav />
-
         <div className="p-col-10 p-lg-10">
           <div className="card card-w-title">
             <h1>Remove A Supervisor</h1>

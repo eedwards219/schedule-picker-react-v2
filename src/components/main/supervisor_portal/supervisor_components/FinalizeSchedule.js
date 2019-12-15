@@ -13,7 +13,6 @@ export class FinalizeSchedule extends Component {
   render() {
     return (
       <div className="p-grid">
-        <SupervisorNav />
         <div className="p-col-12">
           <div className="card">
             <Button

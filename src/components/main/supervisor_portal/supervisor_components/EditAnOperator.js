@@ -69,8 +69,7 @@ export class EditAnOperator extends Component {
 
     return (
       <div className="p-grid p-fluid ">
-        <SupervisorNav />
-        <div className="p-col-12 p-lg-6">
+        <div className="p-col-12 p-lg-7">
           <div className="card card-w-title">
             <h1>Edit An Operator</h1>
             <div className="card card-w-title">

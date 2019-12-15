@@ -3,7 +3,7 @@ import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import logo from "../../../logo.svg";
 import { TabMenu } from "primereact/tabmenu";
-import { AddASchedule } from "./supervisor_components/AddASchedule";
+import AddASchedule from "./supervisor_components/AddASchedule";
 import ScheduleList from "./supervisor_components/ScheduleList";
 import OperatorList from "./supervisor_components/OperatorList";
 import SupervisorNav from "./supervisor_components/SupervisorNav";
@@ -33,27 +33,27 @@ export default class SupervisorPortal extends Component {
         {
           label: "Edit An Operator",
           icon: "pi pi-fw pi-pencil",
-          url: "/editoperator"
+          url: "/supervisor/editoperator"
         },
         {
           label: "Remove an Operator",
           icon: "pi pi-fw pi-user-minus",
-          url: "/removeoperator"
+          url: "/supervisor/removeoperator"
         },
         {
           label: "Add a Schedule",
           icon: "pi pi-fw pi-calendar-plus",
-          url: "/addschedule"
+          url: "/supervisor/addschedule"
         },
         {
           label: "Edit a Schedule",
           icon: "pi pi-fw pi-pencil",
-          url: "/editschedule"
+          url: "/supervisor/editschedule"
         },
         {
           label: "Remove a Schedule",
           icon: "pi pi-fw pi-calendar-minus",
-          url: "/removeschedule"
+          url: "/supervisor/removeschedule"
         },
         { label: "Settings", icon: "pi pi-fw pi-cog" }
       ]
@@ -63,24 +63,37 @@ export default class SupervisorPortal extends Component {
   render() {
     return (
       <div className="p-grid">
-        <SupervisorNav />
-
         <div className="p-col-12">
           <div className="p-grid">
-            <OperatorList />
-            <ScheduleList />
-
-            <Route path="/sl" component={ScheduleList} />
-            <Route path="/ol" component={OperatorList} />
-            <Route path="/addoperator" component={AddAnOperator} />
-            <Route path="/addsupervisor" component={AddASupervisor} />
-            <Route path="/addschedule" component={AddASchedule} />
-            <Route path="/editoperator" component={EditAnOperator} />
-            <Route path="/editschedule" component={EditASchedule} />
-            <Route path="/editsupervisor" component={EditASupervisor} />
-            <Route path="/removeschedule" component={RemoveASchedule} />
-            <Route path="/removeoperator" component={RemoveAnOperator} />
-            <Route path="/removesupervisor" component={RemoveASupervisor} />
+            {/* <OperatorList />
+            <ScheduleList /> */}
+            <Route path="/supervisor/sl" component={ScheduleList} />
+            <Route path="/supervisor/ol" component={OperatorList} />
+            <Route path="/supervisor/addoperator" component={AddAnOperator} />
+            <Route
+              path="/supervisor/addsupervisor"
+              component={AddASupervisor}
+            />
+            <Route path="/supervisor/addschedule" component={AddASchedule} />
+            <Route path="/supervisor/editoperator" component={EditAnOperator} />
+            <Route path="/supervisor/editschedule" component={EditASchedule} />
+            <Route
+              path="/supervisor/editsupervisor"
+              component={EditASupervisor}
+            />
+            <Route
+              path="/supervisor/removeschedule"
+              component={RemoveASchedule}
+            />
+            <Route
+              path="/supervisor/removeoperator"
+              component={RemoveAnOperator}
+            />
+            <Route
+              path="/supervisor/removesupervisor"
+              component={RemoveASupervisor}
+            />
+            <Route path="/supervisor/finalize" component={FinalizeSchedule} />
           </div>
         </div>
       </div>

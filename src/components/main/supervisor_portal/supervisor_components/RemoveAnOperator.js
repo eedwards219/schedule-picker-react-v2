@@ -36,13 +36,11 @@ export class RemoveAnOperator extends Component {
 
     return (
       <div className="p-grid p-fluid ">
-        <SupervisorNav />
-
-        <div className="p-col-10 p-lg-10">
+        <div className="p-col-12">
           <div className="card card-w-title">
             <h1>Remove An Operator</h1>
             <div className="p-grid form-group">
-              <div className="p-col-10 p-md-10 ">
+              <div className="p-col-12  ">
                 <Dropdown
                   options={listOfOperators}
                   value={this.state.operator}

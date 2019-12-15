@@ -33,13 +33,11 @@ export class RemoveASchedule extends Component {
 
     return (
       <div className="p-grid p-fluid ">
-        <SupervisorNav />
-
-        <div className="p-col-6 p-lg-6">
+        <div className="p-col-12 p-lg-12">
           <div className="card card-w-title">
             <h1>Remove A Schedule</h1>
             <div className="p-grid form-group">
-              <div className="p-col-6 p-md-6 ">
+              <div className="p-col-12 p-md-12 ">
                 <Dropdown
                   options={listOfSchedules}
                   value={this.state.schedule}
