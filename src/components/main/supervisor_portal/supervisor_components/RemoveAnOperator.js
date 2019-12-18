@@ -35,31 +35,26 @@ export class RemoveAnOperator extends Component {
     }));
 
     return (
-      <div className="p-grid p-fluid ">
-        <div className="p-col-12">
-          <div className="card card-w-title">
-            <h1>Remove An Operator</h1>
-            <div className="p-grid form-group">
-              <div className="p-col-12  ">
-                <Dropdown
-                  options={listOfOperators}
-                  value={this.state.operator}
-                  onChange={event => this.setState({ operator: event.value })}
-                  autoWidth={false}
-                />
-                <div></div>
-              </div>
-            </div>
-            <Button
-              label="Submit"
-              type="submit"
-              value="Submit"
-              style={{ marginBottom: 10, width: "auto" }}
-              className="indigo-btn btn"
-              onClick={this.handleClick}
+      <div className="p-grid p-fluid card">
+        <h1>Remove An Operator</h1>
+        <div className="p-col-12 p-lg-12 ">
+          <span className="md-inputfield">
+            <Dropdown
+              options={listOfOperators}
+              value={this.state.operator}
+              onChange={event => this.setState({ operator: event.value })}
+              autoWidth={false}
             />
-          </div>
+          </span>
         </div>
+        <Button
+          label="Submit"
+          type="submit"
+          value="Submit"
+          style={{ marginBottom: 10, width: "auto" }}
+          className="indigo-btn btn"
+          onClick={this.handleClick}
+        />
       </div>
     );
   }

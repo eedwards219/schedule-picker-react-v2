@@ -35,31 +35,25 @@ export class RemoveASupervisor extends Component {
     }));
 
     return (
-      <div className="p-grid p-fluid ">
-        <div className="p-col-10 p-lg-10">
-          <div className="card card-w-title">
-            <h1>Remove A Supervisor</h1>
-            <div className="p-grid form-group">
-              <div className="p-col-10 p-md-10 ">
-                <Dropdown
-                  options={listOfSupervisors}
-                  value={this.state.supervisor}
-                  onChange={event => this.setState({ supervisor: event.value })}
-                  autoWidth={false}
-                />
-                <div></div>
-              </div>
-            </div>
-            <Button
-              label="Submit"
-              type="submit"
-              value="Submit"
-              style={{ marginBottom: 10, width: "auto" }}
-              className="indigo-btn btn"
-              onClick={this.handleClick}
-            />
-          </div>
+      <div className="p-grid p-fluid card">
+        <h1>Remove A Supervisor</h1>
+        <div className="p-col-12 p-md-12 ">
+          <Dropdown
+            options={listOfSupervisors}
+            value={this.state.supervisor}
+            onChange={event => this.setState({ supervisor: event.value })}
+            autoWidth={false}
+          />
+          <div></div>
         </div>
+        <Button
+          label="Submit"
+          type="submit"
+          value="Submit"
+          style={{ marginBottom: 10, width: "auto" }}
+          className="indigo-btn btn"
+          onClick={this.handleClick}
+        />
       </div>
     );
   }

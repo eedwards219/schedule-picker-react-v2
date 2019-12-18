@@ -310,9 +310,7 @@ class App extends Component {
                 className="p-link sidebar-anchor"
                 title="Toggle Menu"
                 onClick={this.onToggleMenuClick}
-              >
-                {" "}
-              </button>
+              ></button>
             </div>
 
             <ScrollPanel
@@ -346,9 +344,8 @@ class App extends Component {
                 <Route path="/" exact component={Login} />
                 <Route path="/supervisor" component={supervisorPortal} />
                 <Route path="/operator" component={operatorPortal} />
-
-                {/* <Route path="/oli" component={OperatorListItem} />
-                <Route path="/sli" component={ScheduleListItem} /> */}
+                <Route path="/operatorlist" component={OperatorList} />
+                <Route path="/schedulelist" component={ScheduleList} />
               </Switch>
             </div>
 

@@ -24,8 +24,8 @@ export default class OperatorPortal extends Component {
 
     return (
       <div className="p-grid">
-        <OperatorNav />
-        <Route path="/pick" component={PickYourSchedule} />
+        <PickYourSchedule />
+        {/* <Route path="/pick" component={PickYourSchedule} /> */}
 
         <div className="p-col-12">
           <div className="p-grid">

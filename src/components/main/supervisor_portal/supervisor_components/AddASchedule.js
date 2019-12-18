@@ -110,14 +110,14 @@ export class AddASchedule extends Component {
 
     return (
       <div className="p-grid p-fluid">
-        <div className="p-col-12 p-lg-12">
+        <div className="p-col-12 p-lg-12 card">
           {/* <div className="p-col-12 p-lg-12"> */}
           <div className="card card-w-title">
             <h1>Add a Schedule</h1>
-            <div className=" form-group ">
+            <div className=" form-group card ">
               <h1>Days Off</h1>
-              <div className="p-grid card card-w-title">
-                <div className="p-col-12 p-md-6">
+              <div className="p-grid ">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Sunday"
                     inputId="cb7"
@@ -128,7 +128,7 @@ export class AddASchedule extends Component {
                     Sunday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Monday"
                     inputId="cb6"
@@ -139,7 +139,7 @@ export class AddASchedule extends Component {
                     Monday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Tuesday"
                     inputId="cb5"
@@ -150,7 +150,7 @@ export class AddASchedule extends Component {
                     Tuesday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Wednesday"
                     inputId="cb4"
@@ -161,7 +161,7 @@ export class AddASchedule extends Component {
                     Wednesday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Thursday"
                     inputId="cb3"
@@ -172,7 +172,7 @@ export class AddASchedule extends Component {
                     Thursday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Friday"
                     inputId="cb2"
@@ -183,7 +183,7 @@ export class AddASchedule extends Component {
                     Friday
                   </label>
                 </div>
-                <div className="p-col-12 p-md-6">
+                <div className="p-col-12 p-md-4">
                   <Checkbox
                     value="Saturday"
                     inputId="cb1"
@@ -198,7 +198,7 @@ export class AddASchedule extends Component {
               {/* <div className="p-col-6 p-md-6"> */}
               <h1>Times</h1>
               From
-              <div className="p-grid card card-w-title">
+              <div className="p-grid ">
                 <div className="p-col-6 p-md-6">
                   <Dropdown
                     options={this.state.hourOptions}
@@ -222,7 +222,7 @@ export class AddASchedule extends Component {
               </div>
               <div>
                 to
-                <div className="p-grid card card-w-title">
+                <div className="p-grid ">
                   <div className="p-col-6 p-md-6">
                     <Dropdown
                       options={this.state.hourOptions}

@@ -21,10 +21,11 @@ export class PickYourSchedule extends Component {
     // this.scheduleservice = new ScheduleService();
     this.scheduleTemplate = this.scheduleTemplate.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.scheduleTemplateTwo = this.listOfSchedules.bind(this);
   }
-  //   componentDidMount() {
-  //     this.setState({ source: this.carservice.getCarsSmall() });
-  //   }
+  componentDidMount() {
+    this.listOfSchedules().then(data => this.setState({ source: data }));
+  }
 
   onChange(event) {
     this.setState({
@@ -63,7 +64,6 @@ export class PickYourSchedule extends Component {
   render() {
     console.log("pickstate", this.state);
     console.log("pickprops", this.props);
-
     const listOfSchedules = this.props.schedules.map(schedule => ({
       daysOff: `${schedule.daysOff}`,
       fromHours: `${schedule.fromHours}`,
@@ -71,15 +71,14 @@ export class PickYourSchedule extends Component {
       untilHours: `${schedule.untilHours}`,
       untilMinutes: `${schedule.untilMinutes}`
     }));
+
     return (
       <div className="p-grid p-fluid ">
-        <OperatorNav />
-
-        <div className="p-col-12 p-lg-12">
+        <div>
           <div className="card card-w-title">
             <h1>Pick Your Schedule</h1>
             <PickList
-              source={listOfSchedules}
+              source={this.state.source}
               target={this.state.target}
               itemTemplate={this.scheduleTemplate}
               sourceHeader="Available"

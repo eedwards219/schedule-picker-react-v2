@@ -65,10 +65,9 @@ export default class SupervisorPortal extends Component {
       <div className="p-grid">
         <div className="p-col-12">
           <div className="p-grid">
-            {/* <OperatorList />
-            <ScheduleList /> */}
-            <Route path="/supervisor/sl" component={ScheduleList} />
-            <Route path="/supervisor/ol" component={OperatorList} />
+            {/* <MyTeam /> */}
+            {/* <Route path="/supervisor/sl" component={ScheduleList} />
+            <Route path="/supervisor/ol" component={OperatorList} /> */}
             <Route path="/supervisor/addoperator" component={AddAnOperator} />
             <Route
               path="/supervisor/addsupervisor"

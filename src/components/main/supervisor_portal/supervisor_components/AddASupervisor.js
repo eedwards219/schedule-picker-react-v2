@@ -68,7 +68,7 @@ export class AddASupervisor extends Component {
           <div className="card card-w-title">
             <h1>Add A Supervisor</h1>
             <div className="p-grid form-group">
-              <div className="p-col-12 p-md-6">
+              <div className="p-col-12 p-md-12">
                 <span className="md-inputfield">
                   <InputText
                     onChange={e => this.setState({ name: e.target.value })}
@@ -76,7 +76,7 @@ export class AddASupervisor extends Component {
                   <label>Name</label>
                 </span>
               </div>
-              <div className="p-col-12 p-md-6">
+              <div className="p-col-12 p-md-12">
                 <span className="md-inputfield">
                   <InputText
                     keyfilter="pint"
@@ -86,7 +86,7 @@ export class AddASupervisor extends Component {
                 </span>
               </div>
 
-              <div className="p-col-12 p-lg-6">
+              <div className="p-col-12 p-lg-12">
                 <div>
                   <h1>Schedule</h1>
                   <Dropdown
